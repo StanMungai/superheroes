@@ -2,7 +2,8 @@ class PowersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
 
   def index
-    render json: Power.all 
+    powers = Power.all 
+    render json: powers  
   end
 
   def show

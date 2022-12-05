@@ -3,12 +3,12 @@ rescue_from ActiveRecord::RecordNotFound, with: :rescue_record_not_found
 
   def index
     heroes = Hero.all 
-    render json: heroes 
+    render json: heroes, only: [:id, :name, :super_name]
   end
 
   def show
     hero = Hero.find(params[:id])
-    render json: hero 
+    render json: hero, only: [:id, :name,:super_name], include: :powers
   end
 
   private
